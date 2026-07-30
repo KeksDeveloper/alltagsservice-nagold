@@ -1,0 +1,306 @@
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 950px) {
+
+    .section {
+        padding: 80px 0;
+    }
+
+
+    .hero-content,
+    .about-content,
+    .request-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+
+    .hero-text {
+        max-width: 760px;
+    }
+
+
+    .hero-card {
+        max-width: 620px;
+    }
+
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .service-card {
+        min-height: auto;
+    }
+
+
+    .about-content {
+        gap: 30px;
+    }
+
+
+    .request-information {
+        position: static;
+    }
+
+
+    .contact-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 35px;
+    }
+
+
+    .contact-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .footer-content > div:first-child {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================
+   MOBILE NAVIGATION
+========================= */
+
+@media (max-width: 760px) {
+
+    .container {
+        width: min(100% - 28px, 1120px);
+    }
+
+
+    .header-content {
+        min-height: 72px;
+    }
+
+
+    .menu-button {
+        display: block;
+        position: relative;
+        z-index: 1002;
+    }
+
+
+    .navigation {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        z-index: 1001;
+        display: flex;
+        width: min(86%, 360px);
+        height: 100vh;
+        padding: 110px 30px 40px;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 6px;
+        background-color: var(--white);
+        box-shadow: -20px 0 50px rgba(13, 35, 69, 0.15);
+        transition: right 0.3s ease;
+    }
+
+
+    .navigation.open {
+        right: 0;
+    }
+
+
+    .navigation > a:not(.button) {
+        padding: 14px 4px;
+        border-bottom: 1px solid var(--border);
+        font-size: 1.05rem;
+    }
+
+
+    .navigation .button {
+        margin-top: 20px;
+    }
+
+
+    .menu-button.active span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+
+    .menu-button.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+
+    .menu-button.active span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+
+    .hero {
+        padding: 74px 0;
+    }
+
+
+    h1 {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+    }
+
+
+    .hero-description {
+        font-size: 1.05rem;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+
+    .hero-buttons .button {
+        width: 100%;
+    }
+
+
+    .hero-note {
+        line-height: 1.7;
+    }
+
+
+    .hero-card {
+        padding: 26px;
+    }
+
+
+    .section-heading {
+        margin-bottom: 34px;
+    }
+
+
+    .service-card {
+        padding: 26px;
+    }
+
+
+    .service-badge {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 18px;
+    }
+
+
+    .request-form {
+        padding: 25px;
+    }
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+
+    .contact-section {
+        padding: 64px 0;
+    }
+
+
+    .contact-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+
+
+    .contact-buttons .button {
+        width: 100%;
+    }
+
+
+    .footer {
+        padding-bottom: 100px;
+    }
+
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+
+    .footer-content > div:first-child {
+        grid-column: auto;
+    }
+
+
+    .mobile-contact-button {
+        position: fixed;
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        z-index: 900;
+        display: flex;
+        min-height: 54px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        color: var(--white);
+        background-color: var(--gold-dark);
+        box-shadow: 0 12px 35px rgba(13, 35, 69, 0.28);
+        font-weight: 700;
+    }
+
+}
+
+
+/* =========================
+   KLEINE SMARTPHONES
+========================= */
+
+@media (max-width: 430px) {
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .logo-text strong {
+        font-size: 0.94rem;
+    }
+
+
+    .logo-text small {
+        font-size: 0.69rem;
+    }
+
+
+    .section {
+        padding: 66px 0;
+    }
+
+
+    .hero {
+        padding: 60px 0;
+    }
+
+
+    .hero-card,
+    .service-card,
+    .request-form {
+        border-radius: 16px;
+    }
+
+
+    .benefit-item {
+        gap: 15px;
+    }
+
+}
