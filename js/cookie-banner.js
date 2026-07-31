@@ -16,18 +16,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const savedConsent = localStorage.getItem(CONSENT_STORAGE_KEY);
 
     if (savedConsent === "accepted") {
+    hideCookieBanner();
+
+    if (typeof loadGoogleAnalytics === "function") {
         loadGoogleAnalytics();
-        hideCookieBanner();
-    } else if (savedConsent === "rejected") {
+    }
+    }   else if (savedConsent === "rejected") {
         hideCookieBanner();
     } else {
         showCookieBanner();
     }
 
     acceptButton.addEventListener("click", function () {
-        localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+    localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+    hideCookieBanner();
+
+    if (typeof loadGoogleAnalytics === "function") {
         loadGoogleAnalytics();
-        hideCookieBanner();
+    } else {
+        console.error("Google Analytics konnte nicht geladen werden.");
+    }
     });
 
     rejectButton.addEventListener("click", function () {
