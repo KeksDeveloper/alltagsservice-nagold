@@ -17,11 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showBanner() {
         banner.hidden = false;
+        banner.style.display = "block";
         banner.classList.add("cookie-banner--visible");
     }
 
     function hideBanner() {
         banner.classList.remove("cookie-banner--visible");
+        banner.style.display = "none";
         banner.hidden = true;
     }
 
