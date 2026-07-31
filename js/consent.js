@@ -1,4 +1,4 @@
-alert("consent.js wurde geladen");
+aler
 
 "use strict";
 
