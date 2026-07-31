@@ -1,3 +1,5 @@
+console.log("CONSENT.JS WURDE GELADEN");
+
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
