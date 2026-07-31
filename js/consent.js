@@ -1,4 +1,4 @@
-console.log("CONSENT.JS WURDE GELADEN");
+alert("consent.js wurde geladen");
 
 "use strict";
 
