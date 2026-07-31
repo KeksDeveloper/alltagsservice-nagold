@@ -6,13 +6,10 @@
     --cookie-text: #1d2735;
 }
 
-.cookie-banner[hidden] {
-    display: none;
-}
-
 .cookie-banner {
+    display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 99999;
     right: 20px;
     bottom: 20px;
     left: 20px;
@@ -26,17 +23,10 @@
     border: 1px solid rgba(13, 35, 69, 0.15);
     border-radius: 18px;
     box-shadow: 0 18px 55px rgba(13, 35, 69, 0.24);
-
-    opacity: 0;
-    transform: translateY(25px);
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
 }
 
-.cookie-banner--visible {
-    opacity: 1;
-    transform: translateY(0);
+.cookie-banner.cookie-banner--visible {
+    display: block;
 }
 
 .cookie-banner__title {
