@@ -1,5 +1,3 @@
-alert("CONSENT.JS Wurde geladen");
-
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
