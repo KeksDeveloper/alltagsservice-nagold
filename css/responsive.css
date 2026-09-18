@@ -257,6 +257,10 @@
         font-weight: 700;
     }
 
+    .offer-widget {
+        right: 18px;
+        bottom: 80px;
+    }
 }
 
 
