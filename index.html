@@ -28,7 +28,7 @@
 
     <link 
         rel="stylesheet" 
-        href="css/cookie-banner.css?v=2"
+        href="css/cookie-banner.css"
     >
 
     <link
@@ -799,6 +799,50 @@
 
     </footer>
 
+    <!-- ANGEBOTS-WIDGET-->
+     <div class="offer-widget">
+
+        <button class="offer-trigger" type="button" id="offer-trigger" aria-label="Aktuelles Angebot öffnen" aria-expanded="false" aria-controls="offer-panel">%</button>
+
+        <div class="offer-panel" id="offer-panel" hidden>
+
+            <div class="offer-panel-header">
+                <span class="offer-label">Aktuelles Angebot</span>
+
+                <button class="offer-close" id="offer-close" aria-label="Angebot schließen">x</button>
+
+
+            </div>
+
+            <div class="offer-panel-content">
+                <h2>Zum ersten Mal bei uns?</h2>
+
+                <div class="offer-discount">5 % sparen</div>
+                <p>Sichern Sie sich 5 % Neukundenvorteil auf Ihren ersten Auftrag.</p>
+
+                <div class="offer-countdown">
+                    <div>
+                        <span id="offer-days">00</span>
+                        <small>Tage</small>
+                    </div>
+                    <div>
+                        <span id="offer-hours">00</span>
+                        <small>Std.</small>
+                    </div>
+                    <div>
+                        <span id="offer-minutes">00</span>
+                        <small>Min.</small>
+                    </div>
+                    <div>
+                        <span id="offer-seconds">00</span>
+                        <small>Sek.</small>
+                    </div>
+                </div>
+                <a href="#anfrage" class="offer-button" id="offer-button">Angebot sichern</a>
+                <p class="offer-note" id="offer-note">Nur für Neukunden. Nicht mit anderen Aktionen kombinierbar.</p>
+            </div>
+        </div>
+     </div>
 
     <!-- MOBILER KONTAKTBUTTON -->
     <a
@@ -814,7 +858,7 @@
 
     
     <script src="js/analytics.js"></script>
-    <script src="js/consent.js?v=7"></script>
+    <script src="js/cookie-banner.js"></script>
 
 
 </body>
