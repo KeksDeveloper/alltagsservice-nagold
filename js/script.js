@@ -21,6 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const currentYear = document.querySelector("#current-year");
 
+    const offerPanel = document.getElementById("offer-panel");
+    const offerTrigger = document.getElementById("offer-trigger");
+    const offerClose = document.getElementById("offer-close");
+    const offerButton = document.querySelector(".offer-button");
+
+    const offerDays = document.getElementById("offer-days");
+    const offerHours = document.getElementById("offer-hours");
+    const offerMinutes = document.getElementById("offer-minutes");
+    const offerSeconds = document.getElementById("offer-seconds");
+
+    const offerEndDate = new Date("2026-09-30T23:59:59");
 
     /* =========================
        EMAILJS STARTEN
@@ -222,5 +233,49 @@ document.addEventListener("DOMContentLoaded", function () {
             new Date().getFullYear();
 
     }
+    
+    /* =========================
+       ANGEBOTS-WIDGET
+    ========================= */
+    
+    function openOffer() {
+        offerPanel.hidden = false;
+        offerTrigger.setAttribute("aria-expanded", "true");
+    }
+    function closeOffer() {
+        offerPanel.hidden = true;
+        offerTrigger.setAttribute("aria-expanded", "false");
+    }
 
+    if (offerTrigger) {
+        offerTrigger.addEventListener("click", openOffer);
+    }
+
+    if (offerClose) {
+        offerClose.addEventListener("click", closeOffer);
+    }
+    
+    if (offerButton) {
+        offerButton.addEventListener("click", closeOffer);
+    }
+
+    function updateCountdown() {
+        const now = new Date();
+        const distance = offerEndDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / (1000));
+
+        offerDays.textContent = days;
+        offerHours.textContent = hours;
+        offerMinutes.textContent = minutes;
+        offerSeconds.textContent = seconds;
+
+        console.log(distance);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 });
