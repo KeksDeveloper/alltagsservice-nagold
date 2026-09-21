@@ -777,6 +777,29 @@ p {
     gap: 12px;
 }
 
+.contact-preiseinschaetzung {
+    
+    padding-top: 200px;
+}
+
+.contact-preiseinschaetzung-head1 {
+    font-size: 1.5rem;
+    color: #d3b270;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    max-width: fit-content;
+}
+
+.contact-preiseinschaetzung-head2 {
+    font-size: 1.5rem;
+    color: #d3b270;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+    max-width: fit-content;
+}
+
 
 /* =========================
    FOOTER
