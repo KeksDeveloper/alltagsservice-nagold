@@ -1,22 +1,40 @@
-/* =========================
-   GRUNDEINSTELLUNGEN
-========================= */
+/* ==================================================
+   ZEILEN 1–99 | GRUNDEINSTELLUNGEN & FARBEN
+   OLED-DESIGN: dunkel, aber mit klaren Kontrasten
+================================================== */
 
 :root {
-    --navy: #0d2345;
-    --navy-light: #17365f;
-    --gold: #d6a84f;
-    --gold-dark: #b98c38;
-    --cream: #f8f5ee;
+    /* Markenfarben */
+    --navy: #173a62;
+    --navy-light: #245b91;
+    --gold: #ddb86e;
+    --gold-dark: #c79d50;
+    --accent-orange: #dc7448;
+
+    /* OLED-Flächen */
+    --bg: #07090d;
+    --bg-soft: #0b0f15;
+    --surface: #111720;
+    --surface-2: #171e28;
+    --surface-3: #1d2632;
+
+    /* Text */
+    --heading: #f5f7fa;
+    --text: #e2e7ee;
+    --text-light: #9fa9b8;
+    --text-faint: #7f8998;
+
+    /* Linien / Effekte */
+    --border: #28313d;
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+    --shadow-strong: 0 24px 70px rgba(0, 0, 0, 0.52);
+
     --white: #ffffff;
-    --text: #243247;
-    --text-light: #687386;
-    --border: #e4e6e9;
-    --shadow: 0 18px 50px rgba(13, 35, 69, 0.08);
+    --cream: #171b21;
     --radius: 20px;
     --transition: 0.25s ease;
 }
-
 
 * {
     margin: 0;
@@ -24,31 +42,30 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
+    color-scheme: dark;
 }
-
 
 body {
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text);
-    background-color: var(--white);
+    background-color: var(--bg);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
-
 
 body.menu-open {
     overflow: hidden;
 }
 
-
 a {
     color: inherit;
     text-decoration: none;
 }
-
 
 button,
 input,
@@ -57,40 +74,39 @@ textarea {
     font: inherit;
 }
 
-
 button {
     border: none;
 }
-
 
 img {
     display: block;
     max-width: 100%;
 }
 
+::selection {
+    color: #111111;
+    background-color: var(--gold);
+}
 
 .container {
     width: min(1120px, calc(100% - 40px));
     margin-inline: auto;
 }
 
-
 .section {
     padding: 100px 0;
 }
 
-
-/* =========================
-   TYPOGRAFIE
-========================= */
+/* ==================================================
+   ZEILEN 100–142 | TYPOGRAFIE
+================================================== */
 
 h1,
 h2,
 h3 {
-    color: var(--navy);
+    color: var(--heading);
     line-height: 1.15;
 }
-
 
 h1 {
     max-width: 760px;
@@ -98,127 +114,133 @@ h1 {
     letter-spacing: -0.055em;
 }
 
-
 h2 {
     font-size: clamp(2rem, 4vw, 3.2rem);
     letter-spacing: -0.035em;
 }
 
-
 h3 {
     font-size: 1.35rem;
 }
-
 
 p {
     color: var(--text-light);
 }
 
-
 .eyebrow {
     margin-bottom: 16px;
-    color: var(--gold-dark);
+    color: var(--gold);
     font-size: 0.83rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-
 .eyebrow-light {
     color: #f0cd89;
 }
 
-
-/* =========================
-   BUTTONS
-========================= */
+/* ==================================================
+   ZEILEN 143–228 | BUTTONS
+================================================== */
 
 .button {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 52px;
-    padding: 14px 24px;
-    border: 1px solid var(--navy);
-    border-radius: 12px;
-    color: var(--white);
-    background-color: var(--navy);
+    padding: 13px 22px;
+    border: 1px solid rgba(255, 255, 255,  0.10);
+    border-radius: 14px;
+    color: #ffffff;
+    background-color: #245b91;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     font-weight: 700;
+    letter-spacing: 0.01rem;
     cursor: pointer;
     transition:
-        transform var(--transition),
-        background-color var(--transition),
-        border-color var(--transition);
+        transform 0.20 ease,
+        background-color 0.20 ease,
+        border-color 0.20 ease,
+        box-shadow 0.20 ease;
 }
 
-
 .button:hover {
-    background-color: var(--navy-light);
-    border-color: var(--navy-light);
+    border-color: #3b79b3;
+    background: linear-gradient(180deg, #2b68a1, #1c4a79);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
     transform: translateY(-2px);
 }
 
+.button:focus-visible,
+.card-link:focus-visible,
+.navigation a:focus-visible,
+.contact-link:focus-visible,
+.direct-contact a:focus-visible,
+.offer-button:focus-visible,
+.offer-trigger:focus-visible,
+.offer-close:focus-visible {
+    outline: 3px solid rgba(221, 184, 110, 0.48);
+    outline-offset: 3px;
+}
 
 .button-small {
     min-height: 44px;
     padding: 10px 18px;
 }
 
-
 .button-secondary {
-    color: var(--navy);
-    background-color: transparent;
+    color: var(--heading);
+    background: rgba(255, 255, 255, 0.025);
+    border-color: #465363;
+    box-shadow: none;
 }
-
 
 .button-secondary:hover {
     color: var(--white);
-    background-color: var(--navy);
+    background-color: #182332;
+    border-color: #677485;
 }
-
 
 .button-light {
-    color: var(--navy);
-    background-color: var(--white);
-    border-color: var(--white);
+    color: #13233a;
+    background: #f4f6f8;
+    border-color: #f4f6f8;
 }
-
 
 .button-light:hover {
-    color: var(--navy);
-    background-color: var(--cream);
-    border-color: var(--cream);
+    color: #0e1c2e;
+    background: #e7ebef;
+    border-color: #e7ebef;
 }
-
 
 .button-outline-light {
     color: var(--white);
     background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.55);
+    border-color: rgba(255, 255, 255, 0.46);
+    box-shadow: none;
 }
 
-
 .button-outline-light:hover {
-    color: var(--navy);
+    color: #12243a;
     background-color: var(--white);
     border-color: var(--white);
 }
 
-
-/* =========================
-   HEADER
-========================= */
+/* ==================================================
+   ZEILEN 229–324 | HEADER
+================================================== */
 
 .header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.96);
-    border-bottom: 1px solid rgba(13, 35, 69, 0.08);
-    backdrop-filter: blur(16px);
+    background-color: rgba(8, 11, 16, 0.9);
+    border-bottom: 1px solid var(--border-soft);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
-
 
 .header-content {
     display: flex;
@@ -227,25 +249,23 @@ p {
     min-height: 82px;
 }
 
-
 .logo {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-
 .logo-icon {
     display: grid;
     width: 46px;
     height: 46px;
     place-items: center;
+    border: 1px solid rgba(221, 184, 110, 0.24);
     border-radius: 14px;
-    color: var(--navy);
-    background-color: var(--cream);
+    color: var(--gold);
+    background: linear-gradient(145deg, #1a2028, #11161d);
     font-size: 1.6rem;
 }
-
 
 .logo-text {
     display: flex;
@@ -253,22 +273,19 @@ p {
     line-height: 1.1;
 }
 
-
 .logo-text strong {
-    color: var(--navy);
+    color: var(--heading);
     font-size: 1.05rem;
 }
 
-
 .logo-text small {
     margin-top: 4px;
-    color: var(--gold-dark);
+    color: var(--gold);
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
-
 
 .navigation {
     display: flex;
@@ -276,28 +293,26 @@ p {
     gap: 30px;
 }
 
-
 .navigation > a:not(.button) {
-    color: var(--text);
+    color: #cfd6df;
     font-weight: 600;
     transition: color var(--transition);
 }
 
-
 .navigation > a:not(.button):hover {
-    color: var(--gold-dark);
+    color: var(--gold);
 }
-
 
 .menu-button {
     display: none;
     width: 44px;
     height: 44px;
     padding: 10px;
-    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
     cursor: pointer;
 }
-
 
 .menu-button span {
     display: block;
@@ -305,41 +320,52 @@ p {
     height: 2px;
     margin: 5px 0;
     border-radius: 10px;
-    background-color: var(--navy);
+    background-color: var(--heading);
     transition: var(--transition);
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* ==================================================
+   ZEILEN 325–438 | HERO
+================================================== */
 
 .hero {
-    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    padding: 110px 0 105px;
     background:
-        radial-gradient(
-            circle at top right,
-            rgba(214, 168, 79, 0.16),
-            transparent 35%
-        ),
-        var(--cream);
+        radial-gradient(circle at 86% 18%, rgba(221, 184, 110, 0.12), transparent 28%),
+        radial-gradient(circle at 18% 88%, rgba(36, 91, 145, 0.18), transparent 34%),
+        linear-gradient(135deg, #07090d 0%, #0b1119 48%, #0a0d12 100%);
+    border-bottom: 1px solid var(--border-soft);
 }
 
+.hero::after {
+    position: absolute;
+    inset: auto 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(221, 184, 110, 0.24), transparent);
+    content: "";
+}
 
 .hero-content {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1.35fr 0.65fr;
     align-items: center;
     gap: 70px;
 }
 
+.hero h1 {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.22);
+}
 
 .hero-description {
     max-width: 690px;
     margin-top: 26px;
+    color: #b8c1cd;
     font-size: 1.17rem;
 }
-
 
 .hero-buttons {
     display: flex;
@@ -348,102 +374,98 @@ p {
     margin-top: 34px;
 }
 
-
 .hero-note {
     margin-top: 22px;
+    color: var(--text-faint);
     font-size: 0.9rem;
 }
 
-
 .hero-card {
     padding: 34px;
-    border: 1px solid rgba(13, 35, 69, 0.08);
+    border: 1px solid #2b3542;
     border-radius: var(--radius);
-    background-color: var(--white);
-    box-shadow: var(--shadow);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)),
+        #121922;
+    box-shadow: var(--shadow-strong);
 }
-
 
 .hero-card-label {
     display: inline-block;
     margin-bottom: 18px;
     padding: 7px 11px;
+    border: 1px solid rgba(221, 184, 110, 0.23);
     border-radius: 100px;
-    color: var(--gold-dark);
-    background-color: rgba(214, 168, 79, 0.14);
+    color: #eccd91;
+    background-color: rgba(221, 184, 110, 0.09);
     font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-
 .hero-card h2 {
     font-size: 1.8rem;
 }
-
 
 .hero-card > p {
     margin: 14px 0 26px;
 }
 
-
 .contact-link {
     display: block;
     padding: 16px 0;
     border-top: 1px solid var(--border);
+    transition: color var(--transition);
 }
-
 
 .contact-link span,
 .contact-link strong {
     display: block;
 }
 
-
 .contact-link span {
     margin-bottom: 3px;
-    color: var(--text-light);
+    color: var(--text-faint);
     font-size: 0.84rem;
 }
 
-
 .contact-link strong {
-    color: var(--navy);
+    color: #edf2f7;
     overflow-wrap: anywhere;
 }
 
+.contact-link:hover strong {
+    color: var(--gold);
+}
 
-/* =========================
-   ÜBERSCHRIFTEN
-========================= */
+/* ==================================================
+   ZEILEN 439–452 | ÜBERSCHRIFTEN / SECTION HEADINGS
+================================================== */
 
 .section-heading {
     max-width: 720px;
     margin-bottom: 50px;
 }
 
-
 .section-heading > p:last-child {
     max-width: 650px;
     margin-top: 18px;
 }
 
-
-/* =========================
-   LEISTUNGEN
-========================= */
+/* ==================================================
+   ZEILEN 453–563 | LEISTUNGEN
+================================================== */
 
 .services {
-    background-color: var(--white);
+    background:
+        linear-gradient(180deg, #0d1117 0%, #10161e 100%);
 }
-
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
-
 
 .service-card {
     position: relative;
@@ -451,41 +473,45 @@ p {
     flex-direction: column;
     min-height: 100%;
     padding: 32px;
-    border: 1px solid var(--border);
+    border: 1px solid #2c3643;
     border-radius: var(--radius);
-    background-color: var(--white);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 45%),
+        #151c25;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
     transition:
         transform var(--transition),
         box-shadow var(--transition),
-        border-color var(--transition);
+        border-color var(--transition),
+        background-color var(--transition);
 }
 
-
 .service-card:hover {
-    border-color: rgba(214, 168, 79, 0.55);
-    box-shadow: var(--shadow);
+    border-color: rgba(221, 184, 110, 0.46);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.34);
     transform: translateY(-6px);
 }
 
-
 .service-card-highlight {
-    border-color: rgba(214, 168, 79, 0.7);
-    background-color: #fffdf8;
+    border-color: rgba(221, 184, 110, 0.55);
+    background:
+        radial-gradient(circle at top right, rgba(221, 184, 110, 0.1), transparent 34%),
+        linear-gradient(145deg, rgba(221, 184, 110, 0.035), transparent 55%),
+        #171c23;
 }
-
 
 .service-badge {
     position: absolute;
     top: 22px;
     right: 22px;
     padding: 6px 10px;
+    border: 1px solid rgba(221, 184, 110, 0.26);
     border-radius: 100px;
-    color: var(--navy);
-    background-color: rgba(214, 168, 79, 0.22);
+    color: #f0cf92;
+    background-color: rgba(221, 184, 110, 0.11);
     font-size: 0.72rem;
     font-weight: 700;
 }
-
 
 .service-icon {
     display: grid;
@@ -493,18 +519,17 @@ p {
     height: 52px;
     margin-bottom: 24px;
     place-items: center;
+    border: 1px solid #303c4b;
     border-radius: 15px;
-    color: var(--navy);
-    background-color: var(--cream);
+    color: #f0ca83;
+    background: linear-gradient(145deg, #202a35, #171e27);
     font-size: 1.4rem;
     font-weight: 700;
 }
 
-
 .service-card > p {
     margin-top: 14px;
 }
-
 
 .service-card ul {
     margin: 24px 0 30px;
@@ -512,44 +537,43 @@ p {
     list-style: none;
 }
 
-
 .service-card li {
     position: relative;
     margin-bottom: 12px;
     padding-left: 24px;
-    color: var(--text);
+    color: #d8dee7;
 }
-
 
 .service-card li::before {
     position: absolute;
     left: 0;
-    color: var(--gold-dark);
+    color: var(--gold);
     content: "✓";
     font-weight: 700;
 }
 
-
 .card-link {
     margin-top: auto;
-    color: var(--navy);
+    color: #e7c57f;
     font-weight: 700;
+    transition: color var(--transition), transform var(--transition);
 }
-
 
 .card-link:hover {
-    color: var(--gold-dark);
+    color: #f4d99f;
 }
 
-
-/* =========================
-   ÜBER UNS
-========================= */
+/* ==================================================
+   ZEILEN 564–611 | ÜBER UNS
+================================================== */
 
 .about {
-    background-color: var(--cream);
+    background:
+        radial-gradient(circle at 12% 20%, rgba(36, 91, 145, 0.13), transparent 30%),
+        #080b10;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
 }
-
 
 .about-content {
     display: grid;
@@ -558,50 +582,43 @@ p {
     gap: 90px;
 }
 
-
 .about-text > p:not(.eyebrow) {
     margin: 22px 0 30px;
 }
-
 
 .benefit-list {
     padding: 10px 0;
 }
 
-
 .benefit-item {
     display: flex;
     gap: 22px;
     padding: 26px 0;
-    border-bottom: 1px solid rgba(13, 35, 69, 0.12);
+    border-bottom: 1px solid #252d37;
 }
-
 
 .benefit-item:last-child {
     border-bottom: none;
 }
 
-
 .benefit-item > span {
     flex-shrink: 0;
-    color: var(--gold-dark);
+    color: var(--gold);
     font-weight: 700;
 }
-
 
 .benefit-item h3 {
     margin-bottom: 7px;
 }
 
-
-/* =========================
-   ANFRAGEFORMULAR
-========================= */
+/* ==================================================
+   ZEILEN 612–759 | ANFRAGEFORMULAR
+================================================== */
 
 .request-section {
-    background-color: var(--white);
+    background:
+        linear-gradient(180deg, #10151c 0%, #0c1117 100%);
 }
-
 
 .request-container {
     display: grid;
@@ -610,17 +627,14 @@ p {
     gap: 80px;
 }
 
-
 .request-information {
     position: sticky;
     top: 130px;
 }
 
-
 .request-information > p:not(.eyebrow) {
     margin-top: 20px;
 }
-
 
 .direct-contact {
     margin-top: 34px;
@@ -628,33 +642,31 @@ p {
     border-top: 1px solid var(--border);
 }
 
-
 .direct-contact p {
     margin-bottom: 12px;
 }
 
-
 .direct-contact a {
     display: block;
     margin-top: 8px;
-    color: var(--navy);
+    color: #e8c67f;
     font-weight: 700;
     overflow-wrap: anywhere;
 }
 
-
 .direct-contact a:hover {
-    color: var(--gold-dark);
+    color: #f3daa5;
 }
-
 
 .request-form {
     padding: 40px;
-    border: 1px solid var(--border);
+    border: 1px solid #313b47;
     border-radius: var(--radius);
-    background-color: var(--cream);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 55%),
+        #171e27;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
 }
-
 
 .form-row {
     display: grid;
@@ -662,50 +674,62 @@ p {
     gap: 18px;
 }
 
-
 .form-group {
     margin-bottom: 22px;
 }
 
-
 .form-group label {
     display: block;
     margin-bottom: 9px;
-    color: var(--navy);
+    color: #edf1f5;
     font-size: 0.94rem;
     font-weight: 700;
 }
-
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
     padding: 14px 16px;
-    border: 1px solid #d6d9df;
+    border: 1px solid #37424f;
     border-radius: 10px;
-    color: var(--text);
-    background-color: var(--white);
+    color: #edf2f7;
+    background-color: #0f141b;
     outline: none;
     transition:
         border-color var(--transition),
-        box-shadow var(--transition);
+        box-shadow var(--transition),
+        background-color var(--transition);
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #707b89;
+}
+
+.form-group select option {
+    color: #edf2f7;
+    background-color: #10161d;
+}
 
 .form-group textarea {
     min-height: 140px;
     resize: vertical;
 }
 
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #4b5868;
+}
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 4px rgba(214, 168, 79, 0.14);
+    border-color: #b99553;
+    background-color: #121922;
+    box-shadow: 0 0 0 4px rgba(221, 184, 110, 0.11);
 }
-
 
 .checkbox {
     display: flex;
@@ -717,37 +741,38 @@ p {
     cursor: pointer;
 }
 
-
 .checkbox input {
     width: 18px;
     height: 18px;
     margin-top: 3px;
-    accent-color: var(--navy);
+    accent-color: var(--gold-dark);
 }
-
 
 .form-button {
     width: 100%;
 }
 
-
 .form-notice {
     margin-top: 14px;
+    color: var(--text-faint);
     font-size: 0.8rem;
     text-align: center;
 }
 
-
-/* =========================
-   KONTAKT
-========================= */
+/* ==================================================
+   ZEILEN 760–813 | KONTAKT
+================================================== */
 
 .contact-section {
+    position: relative;
     padding: 76px 0;
     color: var(--white);
-    background-color: var(--navy);
+    background:
+        radial-gradient(circle at 80% 20%, rgba(221, 184, 110, 0.12), transparent 30%),
+        linear-gradient(135deg, #142b46, #0e2035 58%, #0b1725);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-
 
 .contact-content {
     display: flex;
@@ -756,19 +781,16 @@ p {
     gap: 60px;
 }
 
-
 .contact-content h2 {
     max-width: 650px;
     color: var(--white);
 }
 
-
 .contact-content p:not(.eyebrow) {
     max-width: 610px;
     margin-top: 16px;
-    color: rgba(255, 255, 255, 0.72);
+    color: rgba(255, 255, 255, 0.74);
 }
-
 
 .contact-buttons {
     display: flex;
@@ -778,38 +800,27 @@ p {
 }
 
 .contact-preiseinschaetzung {
-    
-    padding-top: 200px;
+    padding-top: 120px;
 }
 
-.contact-preiseinschaetzung-head1 {
-    font-size: 1.5rem;
-    color: #d3b270;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid black;
-    max-width: fit-content;
-}
-
+.contact-preiseinschaetzung-head1,
 .contact-preiseinschaetzung-head2 {
-    font-size: 1.5rem;
-    color: #d3b270;
+    max-width: fit-content;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid black;
-    max-width: fit-content;
+    border-bottom: 1px solid rgba(221, 184, 110, 0.42);
+    color: #e0bd76;
+    font-size: 1.5rem;
 }
 
-
-/* =========================
-   FOOTER
-========================= */
+/* ==================================================
+   ZEILEN 814–869 | FOOTER
+================================================== */
 
 .footer {
     padding: 70px 0 24px;
-    background-color: #08172d;
+    background-color: #05070a;
 }
-
 
 .footer-content {
     display: grid;
@@ -817,20 +828,17 @@ p {
     gap: 70px;
 }
 
-
 .footer-logo {
     color: var(--white);
     font-size: 1.15rem;
     font-weight: 700;
 }
 
-
 .footer-content p {
     max-width: 430px;
     margin-top: 14px;
     color: rgba(255, 255, 255, 0.58);
 }
-
 
 .footer-links,
 .footer-legal {
@@ -839,18 +847,16 @@ p {
     gap: 12px;
 }
 
-
 .footer-links a,
 .footer-legal a {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.72);
+    transition: color var(--transition);
 }
-
 
 .footer-links a:hover,
 .footer-legal a:hover {
-    color: var(--white);
+    color: #f0cc87;
 }
-
 
 .footer-bottom {
     margin-top: 55px;
@@ -858,31 +864,28 @@ p {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .footer-bottom p {
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.44);
     font-size: 0.84rem;
 }
 
-
-/* =========================
-   MOBILER KONTAKTBUTTON
-========================= */
+/* ==================================================
+   ZEILEN 870–877 | MOBILER KONTAKTBUTTON
+================================================== */
 
 .mobile-contact-button {
     display: none;
 }
 
-/* =========================
-   FORMULARMELDUNGEN
-========================= */
+/* ==================================================
+   ZEILEN 878–910 | FORMULARMELDUNGEN
+================================================== */
 
 .form-button:disabled {
     opacity: 0.65;
     cursor: wait;
     transform: none;
 }
-
 
 .form-message {
     display: none;
@@ -893,25 +896,23 @@ p {
     line-height: 1.5;
 }
 
-
 .form-message-success {
     display: block;
-    color: #185c37;
-    background-color: #eaf7ef;
-    border: 1px solid #b9dfc8;
+    color: #b9efcc;
+    background-color: #10261a;
+    border: 1px solid #285d3c;
 }
-
 
 .form-message-error {
     display: block;
-    color: #842029;
-    background-color: #fbeaec;
-    border: 1px solid #efb8bd;
+    color: #ffc1c5;
+    background-color: #2b1519;
+    border: 1px solid #6f3038;
 }
 
-/* =========================
-   FORMULARMELDUNGEN
-========================= */
+/* ==================================================
+   ZEILEN 911–1093 | ANGEBOTS-WIDGET
+================================================== */
 
 .offer-widget {
     position: fixed;
@@ -924,141 +925,117 @@ p {
     display: flex;
     width: 60px;
     height: 60px;
-
     align-items: center;
     justify-content: center;
-
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 50%;
-
     color: var(--white);
-    background-color: #e76f3d;
-
+    background: linear-gradient(145deg, #e17a4f, #c85d36);
     font-size: 1.6rem;
     font-weight: 700;
-
-    box-shadow: var(--shadow);
-
+    box-shadow: 0 14px 38px rgba(0, 0, 0, 0.44);
     cursor: pointer;
-
-    transition: 
+    transition:
         transform var(--transition),
-        background-color var(--transition);
+        filter var(--transition),
+        box-shadow var(--transition);
 }
 
 .offer-trigger:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
     transform: translateY(-2px);
 }
 
 .offer-panel {
     position: absolute;
-
     right: 0;
     bottom: 76px;
-
     width: 320px;
     padding: 24px;
-
-    background: var(--white);
-
-    border: 1px solid var(--border);
-    border-radius: 18px;
-
-    box-shadow: var(--shadow);
-
     overflow: hidden;
+    border: 1px solid #333e4b;
+    border-radius: 18px;
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 55%),
+        #151b23;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.56);
 }
 
 .offer-panel-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     margin-bottom: 18px;
 }
 
 .offer-label {
-    color: var(--gold-dark);
-
+    color: var(--gold);
     font-size: 0.78rem;
     font-weight: 700;
-
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
 
 .offer-close {
     display: flex;
-
-    width: 28px;
-    height: 28px;
-
+    width: 30px;
+    height: 30px;
     align-items: center;
     justify-content: center;
-
+    border: 1px solid transparent;
     border-radius: 50%;
-
-    color: var(--navy);
+    color: #dce2e9;
     background: transparent;
-
     font-size: 1.4rem;
-
     cursor: pointer;
-
-    transition: 
+    transition:
         transform var(--transition),
-        background-color var(--transition);
+        background-color var(--transition),
+        border-color var(--transition);
 }
 
 .offer-close:hover {
-    transform: translateY(-2px);
-    background-color: rgba(13, 35, 69, 0.08);
+    border-color: #3a4654;
+    background-color: #202833;
+    transform: translateY(-1px);
 }
 
 .offer-panel-content {
+    color: var(--text);
     font-size: 1.3rem;
     line-height: 1.5;
 }
 
 .offer-panel-content h2 {
     margin-bottom: 14px;
-
-    color: var(--navy);
-
+    color: var(--heading);
     font-size: 1.3rem;
 }
 
 .offer-discount {
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
-
     padding: 8px 14px;
     margin-bottom: 8px;
-
     border-radius: 14px;
-
     color: var(--white);
-    background-color: #e76f3d;
-
-    box-shadow: 0 12px 35px rgba(13, 35, 69, 0.28);
-
+    background: linear-gradient(145deg, #e17a4f, #c85d36);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
     font-weight: 700;
 }
 
 .offer-panel-content p {
     margin-top: 8px;
-
     color: var(--text-light);
-
     font-size: 0.88rem;
 }
 
 .offer-countdown {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    margin: 18px;
+    margin: 18px 0;
     gap: 8px;
 }
 
@@ -1067,14 +1044,14 @@ p {
     flex-direction: column;
     align-items: center;
     padding: 10px 6px;
-    background-color: var(--cream);
-    border: 1px solid var(--border);
+    border: 1px solid #303a46;
     border-radius: 12px;
+    background-color: #0f141a;
 }
 
 .offer-countdown span {
     display: block;
-    color: var(--navy);
+    color: #f2f5f8;
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -1083,8 +1060,8 @@ p {
 .offer-countdown small {
     display: block;
     margin-top: 3px;
+    color: var(--text-faint);
     font-size: 0.7rem;
-    color: var(--text-light);
 }
 
 .offer-button {
@@ -1093,21 +1070,186 @@ p {
     justify-content: center;
     align-items: center;
     padding: 12px 16px;
-    border-radius: 12px;
-    background: var(--navy);
-    color: var(--white);
-    font-weight: 700;
     margin-top: 5px;
+    border: 1px solid #2a659d;
+    border-radius: 12px;
+    color: var(--white);
+    background: linear-gradient(180deg, #23598d, #193e65);
+    font-weight: 700;
+    transition:
+        transform var(--transition),
+        filter var(--transition);
 }
 
 .offer-button:hover {
-    background: var(--navy-light);
+    filter: brightness(1.08);
     transform: translateY(-1px);
 }
 
 .offer-note {
-    font-size: 0.7rem;
-    color: var(--text-light);
-    text-align: center;
     margin-top: 10px;
+    color: var(--text-faint);
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+/* ==================================================
+   ZEILEN 1094–1135 | RESPONSIVE: TABLET
+================================================== */
+
+@media (max-width: 960px) {
+    .section {
+        padding: 82px 0;
+    }
+
+    .hero {
+        padding: 88px 0;
+    }
+
+    .hero-content,
+    .about-content,
+    .request-container {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .request-information {
+        position: static;
+    }
+
+    .contact-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 34px;
+    }
+
+    .contact-buttons {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .footer-content {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+        gap: 42px;
+    }
+}
+
+/* ==================================================
+   ZEILEN 1136–1218 | RESPONSIVE: MOBILE
+================================================== */
+
+@media (max-width: 720px) {
+    .container {
+        width: min(100% - 28px, 1120px);
+    }
+
+    .section {
+        padding: 70px 0;
+    }
+
+    .header-content {
+        min-height: 72px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .hero {
+        padding: 72px 0 76px;
+    }
+
+    .hero-content {
+        gap: 38px;
+    }
+
+    h1 {
+        font-size: clamp(2.35rem, 12vw, 3.5rem);
+    }
+
+    h2 {
+        font-size: clamp(1.9rem, 8vw, 2.6rem);
+    }
+
+    .hero-card,
+    .service-card,
+    .request-form {
+        padding: 26px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+    }
+
+    .contact-buttons .button {
+        width: 100%;
+    }
+
+    .contact-preiseinschaetzung {
+        padding-top: 80px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 34px;
+    }
+
+    .offer-widget {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .offer-panel {
+        width: min(320px, calc(100vw - 32px));
+    }
+}
+
+/* ==================================================
+   ZEILEN 1219–1235 | RESPONSIVE: KLEINE HANDYS
+================================================== */
+
+@media (max-width: 420px) {
+    .service-badge {
+        position: static;
+        align-self: flex-start;
+        width: fit-content;
+        margin-bottom: 18px;
+    }
+
+    .offer-countdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==================================================
+   ZEILEN 1236–1253 | REDUZIERTE BEWEGUNGEN / ACCESSIBILITY
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }
