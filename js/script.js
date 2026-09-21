@@ -145,11 +145,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         );
 
+        const data = await response.json();
+
         if (!response.ok) {
-            throw new ERROR("Bild konnte nicht hochgeladen werden.");
+            console.error("Cloudinary Fehler:", data);
+
+            throw new ERROR(data.error?.message || "Bild konnte nicht hochgeladen werden.");
         }
 
-        const data = await response.json();
+        console.log("Bild konnte nicht geladen werden.");        
 
         return data.secure_url;
     }
@@ -261,12 +265,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             } catch (error) {
 
-                console.error("EmailJS-Fehler:", error);
+                console.error("Fehler beim Absenden:", error);
 
                 showError(
-                    "Die Anfrage konnte leider nicht gesendet werden. " +
-                    "Bitte versuchen Sie es erneut oder schreiben Sie direkt an " +
-                    "service@alltagsservice-nagold.de."
+                    "Fehler: " + error.message
                 );
 
             } finally {
