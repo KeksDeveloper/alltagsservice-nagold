@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================= */
 
     async function uploadImage(file) {
-        const formFata = new FormData();
+
+        const formData = new FormData();
 
         formData.append("file", file);
         formData.append("upload_preset", UPLOAD_PRESET);
@@ -150,10 +151,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!response.ok) {
             console.error("Cloudinary Fehler:", data);
 
-            throw new ERROR(data.error?.message || "Bild konnte nicht hochgeladen werden.");
+            throw new Error(data.error?.message || "Bild konnte nicht hochgeladen werden.");
         }
 
-        console.log("Bild konnte nicht geladen werden.");        
+        console.log("Bild konnte nicht geladen werden.", data.secure_url);        
 
         return data.secure_url;
     }
@@ -203,8 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 let imageLinks = [];
 
-                const imageInput = document.querySelector("images");
-
                 if (imageInput && imageInput.files.length > 0) {
                     submitButton.textContent = "Bilder werden hochgeladen ...";
 
@@ -237,6 +236,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 submitButton.textContent = "Anfrage wird gesendet ...";
 
+                if (imageInput) {
+                    imageInput.disabled = true;
+                }
+
                 await emailjs.sendForm(
                     SERVICE_ID,
                     TEMPLATE_ID,
@@ -267,11 +270,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 console.error("Fehler beim Absenden:", error);
 
+                const errorText = error?.text || error?.message || JSON.stringify(error);
+                
                 showError(
-                    "Fehler: " + error.message
+                    "Fehler: " + errorText
                 );
 
             } finally {
+
+                if (imageInput) {
+                    imageInput.disabled = false;
+                }
 
                 submitButton.disabled = false;
                 submitButton.textContent = "Anfrage absenden";
