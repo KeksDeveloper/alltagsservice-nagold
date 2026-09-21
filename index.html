@@ -525,6 +525,10 @@
                 Alltagshilfe
             </option>
 
+             <option value="Entrümplung & Reinigung">
+                Entrümplung & Reinigung
+            </option>
+
             <option value="Fahrzeugaufbereitung">
                 Fahrzeugaufbereitung
             </option>
@@ -658,6 +662,34 @@
             required
         ></textarea>
 
+    </div>
+
+    <div class="form-group form-upload">
+        <label for="images">Bilder hinzufügen
+            <span class="optional-label">Optional</span>
+        </label>
+
+        <p class="upload-description">
+            Sie können Bilder Ihres Fahrzeugs, der Wohnunh oder des
+            Einsatzbereichs hinzufügen. So können wir den Aufwand besser einschätzen.
+        </p>
+
+        <label class="upload-box" for="images">
+            <span class="upload-icon">+</span>
+            <span class="upload-text">
+                <strong>Bilder auswählen</strong>
+                <small>JPG, PNG oder WEBP</small>
+            </span>
+        </label>
+
+        <input 
+            type="file"
+            id="images"
+            name="images"
+            accept="image/jpeg,image/png,image/webp"
+            multiple>
+
+        <div class="upload-file-list" id="upload-file-list"></div>
     </div>
 
 
