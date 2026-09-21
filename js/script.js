@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const TEMPLATE_ID = "template_6xj23qu";
     const PUBLIC_KEY = "oRzwBG1a6spOsAfZT";
 
+    const CLOUD_NAME = "x8w5zieq";
+    const UPLOAD_PRESET = "alltagsservice_anfragen";
+
 
     const menuButton = document.querySelector(".menu-button");
     const navigation = document.querySelector(".navigation");
@@ -19,6 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitButton = document.querySelector("#submit-button");
     const formMessage = document.querySelector("#form-message");
 
+    const imageInput = document.querySelector("#images");
+    const uploadFileList = document.querySelector("#upload-file-list");
+
+   
     const currentYear = document.querySelector("#current-year");
 
     const offerPanel = document.getElementById("offer-panel");
@@ -120,10 +127,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+   /* =========================
+       BILD ZU CLOUDINARY HOCHLADEN
+    ========================= */
+
+    async function uploadImage(file) {
+        const formFata = new FormData();
+
+        formData.append("file", file);
+        formData.append("upload_preset", UPLOAD_PRESET);
+
+        const response = await fetch(
+            `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        if (!response.ok) {
+            throw new ERROR("Bild konnte nicht hochgeladen werden.");
+        }
+
+        const data = await response.json();
+
+        return data.secure_url;
+    }
+
 
     /* =========================
        FORMULAR SENDEN
     ========================= */
+
+    
 
     if (requestForm && submitButton && formMessage) {
 
@@ -160,6 +196,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             try {
+
+                let imageLinks = [];
+
+                const imageInput = document.querySelector("images");
+
+                if (imageInput && imageInput.files.length > 0) {
+                    submitButton.textContent = "Bilder werden hochgeladen ...";
+
+                    const files = Array.from(imageInput.files);
+
+                    imageLinks = await Promise.all (
+                        files.map(function (file) {
+                            return uploadImage(file);
+                        })
+                    );
+                }
+
+                let imageLinksInput = 
+                    requestForm.querySelector('input[name="image_links"]');
+
+                if (!imageLinksInput) {
+                    imageLinksInput = document.createElement("input");
+
+                    imageLinksInput.type = "hidden";
+                    imageLinksInput.name = "image_links";
+
+                    requestForm.appendChild(imageLinksInput);
+                }
+
+                if (imageLinks.length > 0) {
+                    imageLinksInput.value = imageLinks.join("\n");
+                } else {
+                    imageLinksInput.value = "Keine Bilder hochgeladen";
+                }
+
+                submitButton.textContent = "Anfrage wird gesendet ...";
 
                 await emailjs.sendForm(
                     SERVICE_ID,
@@ -206,6 +278,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+        if (imageInput && uploadFileList) {
+        imageInput.addEventListener("change", function () {
+            const files = imageInput.files;
+
+            if(files.length === 0) {
+                uploadFileList.textContent = "";
+                return;
+            }
+
+            uploadFileList.textContent =
+                files.length === 1
+                ? "1 Bild auswählen"
+                : files.length + " Bilder auswählen";
+        });
+    }
     }
 
 
@@ -278,4 +365,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+
+
 });
