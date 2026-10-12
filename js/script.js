@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const offerMinutes = document.getElementById("offer-minutes");
     const offerSeconds = document.getElementById("offer-seconds");
 
-    const offerEndDate = new Date("2026-09-30T23:59:59");
+    const offerEndDate = new Date("2026-10-31T23:59:59");
 
     /* =========================
        EMAILJS STARTEN
