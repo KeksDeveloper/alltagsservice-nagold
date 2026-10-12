@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const offerMinutes = document.getElementById("offer-minutes");
     const offerSeconds = document.getElementById("offer-seconds");
 
-    const offerEndDate = new Date("2026-10-31T23:59:59");
+    const offerEndDate = new Date("2026-12-31T23:59:59");
 
     /* =========================
        EMAILJS STARTEN
@@ -361,21 +361,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const now = new Date();
         const distance = offerEndDate - now;
 
+        if (distance <= 0) {
+            offerDays.textContent = "00";
+            offerHours.textContent = "00";
+            offerMinutes.textContent = "00";
+            offerSeconds.textContent = "00";
+            clearInterval(updateCountdown.intervalId);
+            return;
+        }
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / (1000));
 
-        offerDays.textContent = days;
-        offerHours.textContent = hours;
-        offerMinutes.textContent = minutes;
-        offerSeconds.textContent = seconds;
+        offerDays.textContent = String(days).padStart(2, "0");
+        offerHours.textContent = String(hours).padStart(2, "0");
+        offerMinutes.textContent = String(minutes).padStart(2, "0");
+        offerSeconds.textContent = String(seconds).padStart(2, "0");
 
         console.log(distance);
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateCountdown.intervalId = setInterval(updateCountdown, 1000);
 
 
 });
