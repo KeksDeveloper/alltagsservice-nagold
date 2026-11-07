@@ -1,4 +1,4 @@
-import viadukt from '../Pictures/Nagolder_Viadukt.jpg';
+import viadukt from '../../Pictures/Nagolder_Viadukt.jpg';
 import { MapPin } from "lucide-react";
 
 function Hero() {

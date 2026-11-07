@@ -2,13 +2,15 @@
 
 .header {
     width: 100%;
-    height: 84px;
+    min-height: 84px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 48px;
-    background: #FFFFFF;
+    gap: 32px;
+    padding: 16px 32px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
 
 }
 
@@ -16,6 +18,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-shrink: 0;
 }
 
 .header-logo {
@@ -25,6 +28,7 @@
 }
 
 .header-logo-img {
+    display: block;
     width: 52px;
     height: 52px;
     object-fit: contain;
@@ -33,7 +37,6 @@
 .header-brand {
     display: flex;
     flex-direction: column;
-    padding-left: 12px;
 }
 
 .header-brand-title {
@@ -42,16 +45,6 @@
     font-weight: 600;
     color: var(--color-primary);
     letter-spacing: -0.4px;
-}
-
-.header-brand-title:hover {
-    color: var(--color-primary-hover);
-    transition: 0.2s ease;
-}
-
-.header-brand-subtitle:active {
-    color: #52708E;
-    transition: 0.2s ease;
 }
 
 .header-brand-subtitle {
@@ -65,11 +58,10 @@
 .header-nav-list {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 28px;
     margin: 0;
     padding: 0;
     list-style: none;
-    padding-right: 25px;
 }
 
 .header-nav-item {
@@ -79,9 +71,11 @@
     color: var(--color-text);
     cursor: pointer;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
-.header-nav-item:hover {
+.header-nav-item:hover,
+.header-nav-item:focus-within {
     color: var(--color-accent);
 }
 
@@ -92,10 +86,11 @@
     left: 50%;
     width: 0;
     height: 1.5px;
-    background: #294D76;
+    background: var(--color-accent);
     transition: width 0.25s ease, left 0.25s ease;
 }
-.header-nav-item:hover::after {
+.header-nav-item:hover::after,
+.header-nav-item:focus-within::after {
     width: 100%;
     left: 0;
 }
@@ -110,13 +105,27 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 11px 15px;
+    min-height: 44px;
+    padding: 11px 18px;
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-button);
     background: var(--color-primary);
-    color: white;
+    color: var(--color-surface);
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(9, 40, 59, 0.3);
+    box-shadow: 0 3px 10px rgba(16, 30, 53, 0.12);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-cta:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 5px 14px rgba(16, 30, 53, 0.16);
+}
+
+.header-cta:active {
+    box-shadow: none;
 }
 
 

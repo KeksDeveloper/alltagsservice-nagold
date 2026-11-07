@@ -1,4 +1,4 @@
-import logo from '../Pictures/logosmall.png';
+import logo from '../../Pictures/logosmall.png';
 import { Send } from "lucide-react";
 
 function Header() {
