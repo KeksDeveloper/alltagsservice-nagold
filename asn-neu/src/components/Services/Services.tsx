@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useEffect, useRef, useState } from "react";
 import {
     ArrowUpRight,
@@ -154,15 +155,15 @@ function Services() {
                                 {points.map((point) => <li key={point}>{point}</li>)}
                             </ul>
                             <div className="services-card-actions">
-                            <a
-                                href="#kontakt"
+                            <Link
+                                to="/#kontakt"
                                 className="services-card-link"
                                 aria-label={`${title} anfragen`}
                                 onClick={() => window.dispatchEvent(new CustomEvent("asn:select-service", { detail: title }))}
                             >
                                 Jetzt anfragen
                                 <ArrowUpRight size={18} aria-hidden="true" />
-                            </a>
+                            </Link>
                             <button
                                 type="button"
                                 className="services-card-details"
@@ -186,9 +187,9 @@ function Services() {
                 <p className="services-note">
                     Ihr Anliegen ist nicht dabei? Weitere Unterstützung ist nach
                     Absprache möglich.{" "}
-                    <a href="#kontakt" className="services-note-link">
+                    <Link to="/#kontakt" className="services-note-link">
                         Sprechen Sie uns an.
-                    </a>
+                    </Link>
                 </p>
             </div>
             <dialog
@@ -232,13 +233,13 @@ function Services() {
                                 <h3>Zum Beispiel</h3>
                                 <p>{selectedService.example}</p>
                             </div>
-                            <a href="#kontakt" className="services-card-link" onClick={() => {
+                            <Link to="/#kontakt" className="services-card-link" onClick={() => {
                                 window.dispatchEvent(new CustomEvent("asn:select-service", { detail: selectedService.title }));
                                 dialogRef.current?.close();
                             }}>
                                 {selectedService.title} anfragen
                                 <ArrowUpRight size={18} aria-hidden="true" />
-                            </a>
+                            </Link>
                         </div>
                     </>
                 )}

@@ -82,7 +82,7 @@ function About() {
                                 <ImagePlus size={28} strokeWidth={1.4} aria-hidden="true" />
                                 <span aria-hidden="true">Foto folgt</span>
                             </div>
-                            <p className="about-role">Kollege</p>
+                            <p className="about-role">Arbeitskollege</p>
                             <h4>Marco Reingen</h4>
                             <p>Arbeitet mit Daniel Daungauer bei AlltagsService Nagold zusammen.</p>
                         </article>

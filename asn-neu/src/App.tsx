@@ -1,21 +1,27 @@
-import About from "./components/About/About.tsx";
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router";
 import Header from "./components/Header/Header.tsx";
-import Hero from "./components/Hero/Hero.tsx";
-import Services from "./components/Services/Services.tsx";
-import Process from "./components/Process/Process.tsx";
-import Contact from "./components/Contact/Contact.tsx";
+import Footer from "./components/Footer/Footer.tsx";
+import Home from "./pages/Home.tsx";
+import NotFound from "./pages/NotFound.tsx";
+
+const Projects = lazy(() => import("./pages/Projects.tsx"));
 
 function App() {
-
 
   return (
     <>
         <Header />
-        <Hero />
-        <Services />
-        <About />
-        <Process />
-        <Contact />
+        <main id="main-content">
+            <Suspense fallback={<p className="route-loading" role="status">Projektübersicht wird geladen …</p>}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/projekte" element={<Projects />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </Suspense>
+        </main>
+        <Footer />
     </> 
   )
 }

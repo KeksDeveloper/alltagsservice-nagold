@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { ArrowUpRight } from "lucide-react";
 
 const steps = [
@@ -52,10 +53,10 @@ function Process() {
 
                 <div className="process-footer">
                     <p>Was können wir Ihnen abnehmen?</p>
-                    <a href="#kontakt" className="process-link">
+                    <Link to="/#kontakt" className="process-link">
                         Jetzt anfragen
                         <ArrowUpRight size={18} aria-hidden="true" />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

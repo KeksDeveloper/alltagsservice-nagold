@@ -59,6 +59,8 @@ body {
     background-color: var(--color-background);
 }
 
+.route-loading { min-height: 40vh; padding: 64px var(--page-gutter); }
+
 button,
 input,
 textarea,
@@ -71,9 +73,24 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Verhindert Doppeltipp-Zoom an Bedienelementen; Pinch-Zoom bleibt möglich. */
+a,
+button,
+label,
+input,
+select,
+textarea {
+    touch-action: manipulation;
+}
+
 :where(a, button, input, textarea, select):focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 5px;
+}
+
+/* Sprungziele erhalten Fokus zur Orientierung, aber keinen Auswahlrahmen. */
+.navigation-focus-target[tabindex="-1"]:focus {
+    outline: none;
 }
 
 ::selection {
