@@ -1,0 +1,8 @@
+/* Manrope lokal; eine variable Datei für die verwendeten Schriftstärken. */
+@font-face {
+    font-family: "Manrope";
+    font-style: normal;
+    font-weight: 400 800;
+    font-display: swap;
+    src: url("@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");
+}

@@ -1,0 +1,218 @@
+{
+  "1.1": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 272666
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 76730
+    }
+  },
+  "1.2": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 177164
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 59320
+    }
+  },
+  "2.1": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 153630
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 55374
+    }
+  },
+  "2.2": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 177164
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 59320
+    }
+  },
+  "3.1": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 183650
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 58912
+    }
+  },
+  "3.3": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 92642
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 32014
+    }
+  },
+  "4.1": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 176342
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 54928
+    }
+  },
+  "4.2": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 88836
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 23842
+    }
+  },
+  "5.1": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 248138
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 71724
+    }
+  },
+  "5.5": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 183610
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 45776
+    }
+  },
+  "6.1": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 170050
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 61298
+    }
+  },
+  "6.6": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 109326
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 40332
+    }
+  },
+  "7.1": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 175852
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 65676
+    }
+  },
+  "7.7": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 163690
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 58602
+    }
+  },
+  "8.1": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 120040
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 36034
+    }
+  },
+  "8.8": {
+    "full": {
+      "width": 1600,
+      "height": 1200,
+      "bytes": 106524
+    },
+    "small": {
+      "width": 800,
+      "height": 600,
+      "bytes": 31514
+    }
+  },
+  "9.1": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 121786
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 43646
+    }
+  },
+  "9.9": {
+    "full": {
+      "width": 1200,
+      "height": 1600,
+      "bytes": 132370
+    },
+    "small": {
+      "width": 600,
+      "height": 800,
+      "bytes": 31588
+    }
+  }
+}
