@@ -30,8 +30,8 @@ function Footer() {
                 <div className="footer-bottom">
                     <p>© {currentYear} AlltagsService Nagold</p>
                     <nav aria-label="Rechtliche Informationen">
-                        <a href="https://alltagsservice-nagold.de/impressum.html">Impressum</a>
-                        <a href="https://alltagsservice-nagold.de/datenschutz.html">Datenschutz</a>
+                        <Link to="/impressum">Impressum</Link>
+                        <Link to="/datenschutz">Datenschutz</Link>
                     </nav>
                     <Link to="/#start" className="footer-top-link">Nach oben ↑</Link>
                 </div>

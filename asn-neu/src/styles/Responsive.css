@@ -69,6 +69,8 @@ section[id] { scroll-margin-top: 24px; }
 
 /* Smartphones; einspaltige Inhalte und größere Eingabeschrift. */
 @media (max-width: 640px) {
+    .legal-page { padding-top: 40px; padding-bottom: 40px; }
+    .legal-content { padding: 24px 20px; }
     .project-viewer { width: calc(100% - 16px); max-height: calc(100dvh - 16px); border-radius: 14px; }
     .project-viewer-header { padding: 16px; gap: 12px; }
     .project-viewer-header h2 { font-size: 18px; }

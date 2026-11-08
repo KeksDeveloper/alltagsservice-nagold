@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router";
 import type { FormEvent } from "react";
 import { ArrowLeft, ArrowUpRight, Car, Check, HandHelping, Hammer, Mail, PackageOpen, PawPrint, Phone, ShoppingBag, Sparkles, Upload } from "lucide-react";
 
@@ -217,7 +218,7 @@ function Contact() {
                             <div className="contact-field"><label htmlFor="contact-preferred">Bevorzugter Kontaktweg</label><select id="contact-preferred" name="preferred_contact" value={preferredContact} onChange={event => setPreferredContact(event.target.value)}><option>E-Mail</option><option>Telefon</option><option>WhatsApp</option></select></div>
                         </div>
                         <div className="contact-honeypot" aria-hidden="true"><label htmlFor="contact-website">Website</label><input id="contact-website" name="website" tabIndex={-1} autoComplete="off" /></div>
-                        <label className="contact-privacy"><input type="checkbox" name="Datenschutz akzeptiert" value="Ja" required /><span>Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Beim Absenden werden die Formulardaten an EmailJS und ausgewählte Bilder an Cloudinary übertragen. *</span></label>
+                        <label className="contact-privacy"><input type="checkbox" name="Datenschutz akzeptiert" value="Ja" required /><span>Ich stimme zu, dass meine Angaben zur Bearbeitung meiner Anfrage verwendet werden. Beim Absenden werden die Formulardaten an EmailJS und ausgewählte Bilder an Cloudinary übertragen. Weitere Informationen in der <Link to="/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</Link>. *</span></label>
                         </div>
                         <div className="contact-step-actions">
                             {step > 0 && <button type="button" className="contact-back" onClick={() => changeStep(step - 1)}><ArrowLeft size={16} aria-hidden="true" />Zurück</button>}

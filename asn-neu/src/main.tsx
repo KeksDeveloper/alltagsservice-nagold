@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter } from 'react-router';
 import './styles/fonts.css';
+import './styles/legal.css';
 import  './styles/global.css';
 import './components/Header/header.css';
 import './components/Hero/hero.css';
